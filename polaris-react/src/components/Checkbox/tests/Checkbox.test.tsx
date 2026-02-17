@@ -102,9 +102,8 @@ describe('<Checkbox />', () => {
     it('sets a random id on the input when none is passed', () => {
       const element = mountWithApp(<Checkbox label="Checkbox" />);
 
-      expect(element).toContainReactComponent('input', {
-        id: ':r8:',
-      });
+      const input = element.find('input');
+      expect(input?.prop('id')).toBeTruthy();
     });
   });
 
@@ -138,9 +137,8 @@ describe('<Checkbox />', () => {
         <Checkbox label="Checkbox" helpText="Some help" />,
       );
 
-      expect(checkbox).toContainReactComponent('input', {
-        'aria-describedby': ':rc:HelpText',
-      });
+      const describedBy = checkbox.find('input')!.prop('aria-describedby') as string;
+      expect(describedBy).toMatch(/HelpText$/);
 
       expect(checkbox.find('div')).toContainReactText('Some help');
     });
@@ -168,9 +166,8 @@ describe('<Checkbox />', () => {
         <Checkbox label="Checkbox" error="Some error" />,
       );
 
-      expect(checkbox).toContainReactComponent('input', {
-        'aria-describedby': ':re:Error',
-      });
+      const describedBy = checkbox.find('input')!.prop('aria-describedby') as string;
+      expect(describedBy).toMatch(/Error$/);
 
       expect(checkbox.find('div')).toContainReactText('Some error');
     });
@@ -188,9 +185,8 @@ describe('<Checkbox />', () => {
         <Checkbox label="Checkbox" error="Some error" helpText="Some help" />,
       );
 
-      expect(checkbox).toContainReactComponent('input', {
-        'aria-describedby': ':rg:Error :rg:HelpText',
-      });
+      const describedBy = checkbox.find('input')!.prop('aria-describedby') as string;
+      expect(describedBy).toMatch(/Error .+HelpText$/);
       expect(checkbox.find('div')).toContainReactText('Some error');
       expect(checkbox.find('div')).toContainReactText('Some help');
     });

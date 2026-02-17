@@ -1,13 +1,9 @@
-import React, {forwardRef} from 'react';
-import type {RefObject} from 'react';
+import React from 'react';
 
-export interface PolarisContainerProps {}
-
-function PortalsContainerComponent(
-  _props: PolarisContainerProps,
-  ref: RefObject<HTMLDivElement>,
-) {
-  return <div id="PolarisPortalsContainer" ref={ref} />;
+export interface PolarisContainerProps {
+  ref?: React.Ref<HTMLDivElement>;
 }
 
-export const PortalsContainer = forwardRef(PortalsContainerComponent);
+export function PortalsContainer({ref}: PolarisContainerProps) {
+  return <div id="PolarisPortalsContainer" ref={ref} />;
+}

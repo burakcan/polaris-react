@@ -1,4 +1,5 @@
 import {useContext} from 'react';
+import type {JSX} from 'react';
 
 import type {FeaturesConfig} from './types';
 import {FeaturesContext} from './context';

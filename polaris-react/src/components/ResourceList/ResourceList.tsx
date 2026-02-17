@@ -164,8 +164,8 @@ export function ResourceList<TItemType extends ResourceListItemData>({
   const [loadingPosition, setLoadingPositionState] = useState(0);
   const [lastSelected, setLastSelected] = useState<number>();
   const [smallScreen, setSmallScreen] = useState(isBreakpointsXS());
-  const forceUpdate: (x?: number) => void = useReducer<(x?: number) => number>(
-    (x = 0) => x + 1,
+  const forceUpdate: () => void = useReducer(
+    (x: number) => x + 1,
     0,
   )[1];
   const checkableButtonRef = useRef<HTMLInputElement>(null);
@@ -174,7 +174,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     singular: i18n.translate('Polaris.ResourceList.defaultItemSingular'),
     plural: i18n.translate('Polaris.ResourceList.defaultItemPlural'),
   }));
-  const listRef: React.RefObject<HTMLUListElement> = useRef(null);
+  const listRef: React.RefObject<HTMLUListElement | null> = useRef(null);
 
   const handleSelectMode = (selectMode: boolean) => {
     setSelectMode(selectMode);

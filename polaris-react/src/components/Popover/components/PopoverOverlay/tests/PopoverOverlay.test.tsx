@@ -224,19 +224,13 @@ describe('<PopoverOverlay />', () => {
         activator={activator}
         onClose={spy}
       >
-        (
-        <TextField
-          type="number"
-          label="Store name"
-          value="Click me"
-          onChange={() => {}}
-          autoComplete="off"
-        />
-        )
+        <svg data-testid="test-svg">
+          <path d="M0 0" />
+        </svg>
       </PopoverOverlay>,
     );
 
-    const target = popoverOverlay.find(TextField)!.find('svg')!.domNode!;
+    const target = popoverOverlay.find('svg')!.domNode!;
     const clickEvent = new MouseEvent('click', {bubbles: true});
 
     target.dispatchEvent(clickEvent);

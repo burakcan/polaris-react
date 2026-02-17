@@ -7,7 +7,7 @@ export function useHover(
   /**
    * The target element for the mouseenter event.
    */
-  ref: RefObject<HTMLElement>,
+  ref: RefObject<HTMLElement | null>,
 ): boolean {
   const [isHovered, setIsHovered] = useState(false);
 

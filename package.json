@@ -66,6 +66,22 @@
     "turbo": "^1.11.1",
     "typescript": "^4.9.3"
   },
+  "pnpm": {
+    "overrides": {
+      "react": "^19.0.0",
+      "react-dom": "^19.0.0",
+      "@types/react": "^19.0.0",
+      "@types/react-dom": "^19.0.0",
+      "react-reconciler": "^0.31.0"
+    },
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "@shopify/react-testing>react": "^19.0.0",
+        "@shopify/react-testing>react-dom": "^19.0.0",
+        "react-reconciler>react": "^19.0.0"
+      }
+    }
+  },
   "size-limit": [
     {
       "name": "polaris-react-cjs",

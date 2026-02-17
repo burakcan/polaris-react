@@ -5,7 +5,7 @@ import {nodeResolve} from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
 const pkg = JSON.parse(
-  readFileSync(new URL('./package.json', import.meta.url).pathname),
+  readFileSync(new URL('./package.json', import.meta.url)),
 );
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 

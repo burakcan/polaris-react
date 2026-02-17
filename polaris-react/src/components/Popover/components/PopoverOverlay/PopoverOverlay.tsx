@@ -74,7 +74,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
 
   private contentNode = createRef<HTMLDivElement>();
   private enteringTimer?: number;
-  private overlayRef: React.RefObject<PositionedOverlay>;
+  private overlayRef: React.RefObject<PositionedOverlay | null>;
   private observer?: ResizeObserver;
 
   constructor(props: PopoverOverlayProps) {
@@ -382,7 +382,7 @@ export function nodeContainsDescendant(
 
 function wasContentNodeDescendant(
   composedPath: readonly EventTarget[],
-  contentNode: React.RefObject<HTMLDivElement>,
+  contentNode: React.RefObject<HTMLDivElement | null>,
 ) {
   return (
     contentNode.current != null && composedPath.includes(contentNode.current)

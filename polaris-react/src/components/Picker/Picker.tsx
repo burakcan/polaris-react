@@ -1,5 +1,4 @@
 import React, {
-  createRef,
   isValidElement,
   useCallback,
   useMemo,
@@ -66,7 +65,7 @@ export function Picker({
   onClose,
   ...listboxProps
 }: PickerProps) {
-  const activatorRef = createRef<HTMLButtonElement>();
+  const activatorRef = useRef<HTMLButtonElement>(null);
   const [activeItems, setActiveItems] = useState<string[]>([]);
   const [popoverActive, setPopoverActive] = useState(false);
   const [activeOptionId, setActiveOptionId] = useState<string>();
@@ -283,6 +282,6 @@ const reactChildrenText = (children: React.ReactNode): string => {
   if (typeof children === 'string') return children;
 
   return isValidElement(children)
-    ? reactChildrenText(children?.props?.children)
+    ? reactChildrenText((children?.props as any)?.children)
     : '';
 };

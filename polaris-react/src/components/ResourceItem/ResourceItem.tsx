@@ -177,7 +177,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         <div
           className={styles.CheckboxWrapper}
           onClick={stopPropagation}
-          onChange={this.handleLargerSelectionArea}
+          onChange={this.handleLargerSelectionArea as any}
         >
           <UseId>
             {(id) => (
@@ -527,7 +527,7 @@ function getAlignment(alignment?: Alignment): InlineStackProps['blockAlign'] {
   }
 }
 
-function UseId(props: {children(id: string): JSX.Element}) {
+function UseId(props: {children(id: string): React.JSX.Element}) {
   const id = useId();
   return props.children(id);
 }

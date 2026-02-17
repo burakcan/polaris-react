@@ -34,7 +34,7 @@ import {Title} from './components';
 import type {TitleProps} from './components';
 import styles from './Header.module.css';
 
-type MaybeJSX = JSX.Element | null;
+type MaybeJSX = React.JSX.Element | null;
 
 interface PrimaryAction
   extends DestructableAction,
@@ -347,7 +347,7 @@ function determineLayout({
   additionalMetadataMarkup: MaybeJSX;
   breadcrumbMarkup: MaybeJSX;
   isNavigationCollapsed: boolean;
-  pageTitleMarkup: JSX.Element;
+  pageTitleMarkup: React.JSX.Element;
   paginationMarkup: MaybeJSX;
   primaryActionMarkup: MaybeJSX;
   title?: string;

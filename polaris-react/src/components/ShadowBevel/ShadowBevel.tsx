@@ -82,7 +82,7 @@ function mapResponsiveProp(
   return Object.fromEntries(
     Object.entries(responsiveProp).map(([breakpointsAlias, value]) => [
       breakpointsAlias,
-      callback(value),
+      callback(!!value),
     ]),
   );
 }

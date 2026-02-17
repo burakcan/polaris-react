@@ -1,5 +1,4 @@
 import React, {
-  forwardRef,
   useContext,
   useRef,
   useState,
@@ -55,10 +54,8 @@ export interface BannerProps {
   stopAnnouncements?: boolean;
 }
 
-export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
-  props: BannerProps,
-  bannerRef,
-) {
+export function Banner(props: BannerProps & {ref?: React.Ref<BannerHandles>}) {
+  const bannerRef = props.ref;
   const {tone, stopAnnouncements} = props;
   const withinContentContainer = useContext(WithinContentContext);
   const {wrapperRef, handleKeyUp, handleBlur, handleMouseUp, shouldShowFocus} =
@@ -86,7 +83,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
       </div>
     </BannerContext.Provider>
   );
-});
+}
 
 interface BannerLayoutProps {
   backgroundColor: BoxProps['background'];

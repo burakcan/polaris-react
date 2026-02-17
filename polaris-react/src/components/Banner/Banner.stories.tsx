@@ -179,7 +179,7 @@ export const InAModal = {
 
 export const WithFocus = {
   render() {
-    const banner = useRef();
+    const banner = useRef(null);
 
     useEffect(() => banner.current.focus(), []);
 

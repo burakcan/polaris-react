@@ -3,7 +3,7 @@ import {breakpointsAliases} from '@shopify/polaris-tokens';
 
 import {isObject} from './is-object';
 
-type Falsy = boolean | undefined | null | 0;
+type Falsy = boolean | undefined | null | 0 | 0n;
 
 type ResponsivePropConfig<T = string> = {
   [Breakpoint in BreakpointsAlias]?: T;

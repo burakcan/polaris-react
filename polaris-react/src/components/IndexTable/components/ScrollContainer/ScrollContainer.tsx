@@ -11,7 +11,7 @@ import styles from './ScrollContainer.module.css';
 
 export interface ScrollContainerProps {
   children: React.ReactNode;
-  scrollableContainerRef: React.RefObject<HTMLDivElement>;
+  scrollableContainerRef: React.RefObject<HTMLDivElement | null>;
   onScroll(canScrollLeft: boolean, canScrollRight: boolean): void;
 }
 

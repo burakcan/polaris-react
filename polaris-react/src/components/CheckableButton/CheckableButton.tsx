@@ -1,4 +1,4 @@
-import React, {useRef, useImperativeHandle, forwardRef} from 'react';
+import React, {useRef, useImperativeHandle} from 'react';
 
 import type {CheckboxHandles} from '../../types';
 import {Checkbox} from '../Checkbox';
@@ -13,19 +13,18 @@ export interface CheckableButtonProps {
   disabled?: boolean;
   onToggleAll?(): void;
   ariaLive?: 'off' | 'polite';
+  ref?: React.Ref<any>;
 }
 
-export const CheckableButton = forwardRef(function CheckableButton(
-  {
-    accessibilityLabel,
-    label = '',
-    onToggleAll,
-    selected,
-    disabled,
-    ariaLive,
-  }: CheckableButtonProps,
+export function CheckableButton({
+  accessibilityLabel,
+  label = '',
+  onToggleAll,
+  selected,
+  disabled,
+  ariaLive,
   ref,
-) {
+}: CheckableButtonProps) {
   const checkBoxRef = useRef<CheckboxHandles>(null);
 
   function focus() {
@@ -59,4 +58,4 @@ export const CheckableButton = forwardRef(function CheckableButton(
       ) : null}
     </div>
   );
-});
+}

@@ -42,7 +42,7 @@ function generateAdditionalVerticalMovement(index: number) {
 export const ToastManager = memo(function ToastManager({
   toastMessages,
 }: ToastManagerProps) {
-  const toastNodes: React.RefObject<HTMLDivElement>[] = [];
+  const toastNodes: React.RefObject<HTMLDivElement | null>[] = [];
   const [shouldExpand, setShouldExpand] = useState(false);
   const isFullyExpanded = useRef(false);
   const fullyExpandedTimeout = useRef<ReturnType<typeof setTimeout> | null>(
@@ -138,9 +138,11 @@ export const ToastManager = memo(function ToastManager({
           }
         >
           <div
-            ref={(node) =>
-              reverseOrderIndex === 0 ? (firstToast.current = node) : null
-            }
+            ref={(node) => {
+              if (reverseOrderIndex === 0) {
+                firstToast.current = node;
+              }
+            }}
           >
             <Toast {...toast} isHovered={shouldExpand} />
           </div>

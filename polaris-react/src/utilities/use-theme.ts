@@ -1,4 +1,5 @@
 import {createContext, useContext} from 'react';
+import type {JSX} from 'react';
 import type {ThemeName, Theme} from '@shopify/polaris-tokens';
 import {themes} from '@shopify/polaris-tokens';
 

@@ -1,4 +1,4 @@
-import React, {useRef, forwardRef} from 'react';
+import React, {useRef} from 'react';
 import {Transition} from 'react-transition-group';
 
 import {classNames} from '../../utilities/css';
@@ -40,21 +40,19 @@ export interface SelectAllActionsProps {
 /**
  * @deprecated Use `BulkActions` instead.
  */
-export const SelectAllActions = forwardRef(function SelectAllActions(
-  {
-    label,
-    selectMode,
-    paginatedSelectAllText,
-    paginatedSelectAllAction,
-    disabled,
-    isSticky,
-    hasPagination,
-    accessibilityLabel,
-    selected,
-    onToggleAll,
-  }: SelectAllActionsProps,
+export function SelectAllActions({
+  label,
+  selectMode,
+  paginatedSelectAllText,
+  paginatedSelectAllAction,
+  disabled,
+  isSticky,
+  hasPagination,
+  accessibilityLabel,
+  selected,
+  onToggleAll,
   ref,
-) {
+}: SelectAllActionsProps & {ref?: React.Ref<any>}) {
   const nodeRef = useRef<HTMLDivElement>(null);
   const paginatedSelectAllMarkup = paginatedSelectAllAction ? (
     <UnstyledButton
@@ -124,4 +122,4 @@ export const SelectAllActions = forwardRef(function SelectAllActions(
     </Transition>
   );
   return markup;
-});
+}

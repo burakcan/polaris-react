@@ -1,6 +1,5 @@
 import React, {
   Children,
-  forwardRef,
   useEffect,
   useCallback,
   useImperativeHandle,
@@ -93,23 +92,20 @@ export interface PopoverPublicAPI {
 // Letting this be implicit works in this project but fails in projects that use
 // generated *.d.ts files.
 
-const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
-  function Popover(
-    {
-      activatorWrapper = 'div',
-      children,
-      onClose,
-      activator,
-      preventFocusOnClose,
-      active,
-      fixed,
-      ariaHaspopup,
-      preferInputActivator = true,
-      zIndexOverride,
-      ...rest
-    },
-    ref,
-  ) {
+function PopoverComponent({
+  activatorWrapper = 'div',
+  children,
+  onClose,
+  activator,
+  preventFocusOnClose,
+  active,
+  fixed,
+  ariaHaspopup,
+  preferInputActivator = true,
+  zIndexOverride,
+  ref,
+  ...rest
+}: PopoverProps & {ref?: React.Ref<PopoverPublicAPI>}) {
     const [isDisplayed, setIsDisplay] = useState(false);
     const [activatorNode, setActivatorNode] = useState<HTMLElement>();
     const overlayRef = useRef<PopoverOverlay>(null);
@@ -277,8 +273,7 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
         {portal}
       </WrapperComponent>
     );
-  },
-);
+}
 
 function isInPortal(element: Element) {
   let parentElement = element.parentElement;

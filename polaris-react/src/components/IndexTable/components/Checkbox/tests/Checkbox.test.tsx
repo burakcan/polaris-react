@@ -2,7 +2,7 @@ import React from 'react';
 import type {ReactElement} from 'react';
 import {mountWithApp} from 'tests/utilities';
 import type {Element as ElementType} from '@shopify/react-testing';
-import {act} from 'react-dom/test-utils';
+import {act} from 'react';
 
 import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
 import {IndexTable} from '../../../IndexTable';

@@ -20,7 +20,7 @@ export function Resizer({
 }: ResizerProps) {
   const contentNode = useRef<HTMLDivElement>(null);
   const minimumLinesNode = useRef<HTMLDivElement>(null);
-  const animationFrame = useRef<number>();
+  const animationFrame = useRef<number>(undefined);
   const currentHeight = useRef<number | null>(currentHeightProp);
 
   if (currentHeightProp !== currentHeight.current) {

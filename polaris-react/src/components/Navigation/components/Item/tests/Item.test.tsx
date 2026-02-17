@@ -522,7 +522,7 @@ describe('<Nav.Item />', () => {
 
       expect(item).toContainReactComponent('a', {
         'aria-expanded': false,
-        'aria-controls': expect.stringMatching(/^:r\d[a-z]?:$/),
+        'aria-controls': expect.any(String),
       });
     });
 

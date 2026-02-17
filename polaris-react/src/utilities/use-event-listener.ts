@@ -10,7 +10,7 @@ type UseEventListenerTarget =
   | Window
   | Document
   | HTMLElement
-  | RefObject<HTMLElement>;
+  | RefObject<HTMLElement | null>;
 
 /**
  * Extracts the target element from a React `RefObject` or returns the input element.
@@ -70,7 +70,7 @@ export function useEventListener<
   useEffect(() => {
     if (!(typeof eventName === 'string' && target !== null)) return;
 
-    let targetElement: Exclude<UseEventListenerTarget, RefObject<HTMLElement>>;
+    let targetElement: Exclude<UseEventListenerTarget, RefObject<HTMLElement | null>>;
 
     if (typeof target === 'undefined') {
       targetElement = window;

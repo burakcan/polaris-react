@@ -42,7 +42,7 @@ export interface SheetProps {
   /** ARIA label for sheet */
   accessibilityLabel: string;
   /** The element or the RefObject that activates the Sheet */
-  activator?: React.RefObject<HTMLElement> | React.ReactElement;
+  activator?: React.RefObject<HTMLElement | null> | React.ReactElement;
 }
 
 /** @deprecated Use Modal instead or avoid modal patterns all together. */
@@ -129,7 +129,7 @@ export function Sheet({
 }
 
 function isRef(
-  ref: React.RefObject<HTMLElement> | React.ReactElement,
-): ref is React.RefObject<HTMLElement> {
+  ref: React.RefObject<HTMLElement | null> | React.ReactElement,
+): ref is React.RefObject<HTMLElement | null> {
   return Object.prototype.hasOwnProperty.call(ref, 'current');
 }

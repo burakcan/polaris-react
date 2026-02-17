@@ -366,7 +366,7 @@ describe('<Row />', () => {
     ['<Button>', () => <Button url="/" dataPrimaryLink />],
   ])(
     'calls onNavigation when clicked %s',
-    (_: string, renderElement: () => JSX.Element) => {
+    (_: string, renderElement: () => React.JSX.Element) => {
       const onNavigationSpy = jest.fn();
       const row = mountWithTable(
         <Row {...defaultProps} onNavigation={onNavigationSpy}>

@@ -1,5 +1,5 @@
 import {SelectIcon} from '@shopify/polaris-icons';
-import React, {forwardRef} from 'react';
+import React from 'react';
 
 import {BlockStack} from '../../../BlockStack';
 import {Icon} from '../../../Icon';
@@ -14,10 +14,10 @@ export interface ActivatorProps {
   placeholder?: string;
   selected?: string;
   onClick?(): void;
+  ref?: React.Ref<HTMLButtonElement>;
 }
 
-export const Activator = forwardRef<HTMLButtonElement, ActivatorProps>(
-  ({disabled, label, placeholder, selected, onClick}, ref) => {
+export function Activator({disabled, label, placeholder, selected, onClick, ref}: ActivatorProps) {
     return (
       <button
         ref={ref}
@@ -49,7 +49,4 @@ export const Activator = forwardRef<HTMLButtonElement, ActivatorProps>(
         </span>
       </button>
     );
-  },
-);
-
-Activator.displayName = 'Activator';
+}

@@ -22,7 +22,7 @@ export const isThemeNameLocal = (name: string): name is ThemeNameLocal =>
   themeNamesLocal.includes(name as any);
 
 export interface ThemeProviderProps {
-  as?: keyof React.ReactHTML;
+  as?: keyof React.JSX.IntrinsicElements;
   children: React.ReactNode;
   className?: string;
   theme?: ThemeNameLocal;

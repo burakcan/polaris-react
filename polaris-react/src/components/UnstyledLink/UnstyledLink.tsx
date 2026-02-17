@@ -1,4 +1,4 @@
-import React, {memo, forwardRef} from 'react';
+import React, {memo} from 'react';
 
 import {unstyled} from '../shared';
 import {useLink} from '../../utilities/link';
@@ -10,15 +10,11 @@ import type {LinkLikeComponentProps} from '../../utilities/link';
 // is generated correctly.
 export interface UnstyledLinkProps extends LinkLikeComponentProps {}
 
-// Wrapping forwardRef in a memo gets a name set since
-// https://github.com/facebook/react/issues/16722
-// but eslint-plugin-react doesn't know that just yet
-// eslint-disable-next-line react/display-name
 export const UnstyledLink = memo(
-  forwardRef<any, UnstyledLinkProps>(function UnstyledLink(props, _ref) {
+  function UnstyledLink({ref, ...props}: UnstyledLinkProps & {ref?: React.Ref<any>}) {
     const LinkComponent = useLink();
     if (LinkComponent) {
-      return <LinkComponent {...unstyled.props} {...props} ref={_ref} />;
+      return <LinkComponent {...unstyled.props} {...props} ref={ref} />;
     }
 
     const {external, url, target: targetProp, ...rest} = props;
@@ -40,8 +36,8 @@ export const UnstyledLink = memo(
         href={url}
         rel={rel}
         {...unstyled.props}
-        ref={_ref}
+        ref={ref}
       />
     );
-  }),
+  },
 );

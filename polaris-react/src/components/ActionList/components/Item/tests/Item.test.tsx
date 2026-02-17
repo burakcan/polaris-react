@@ -87,19 +87,19 @@ describe('<Item />', () => {
     });
   });
 
-  it('passes `url` as null to `<UnstyledLink />` when disabled', () => {
+  it('keeps `url` on `<UnstyledLink />` when disabled but disables onClick', () => {
     const item = mountWithApp(<Item url="https://shopify.com" disabled />);
     expect(item).toContainReactComponent(UnstyledLink, {
-      url: null,
+      url: 'https://shopify.com',
     });
   });
 
-  it('passes `onClick` as null to `<UnstyledLink />` when disabled', () => {
+  it('passes `onClick` as undefined to `<UnstyledLink />` when disabled', () => {
     const item = mountWithApp(
       <Item onAction={noop} disabled url="https://shopify.com" />,
     );
     expect(item).toContainReactComponent(UnstyledLink, {
-      onClick: null,
+      onClick: undefined,
     });
   });
 

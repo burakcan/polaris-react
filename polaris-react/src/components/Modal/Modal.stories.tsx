@@ -532,7 +532,7 @@ export const WithoutAnActivatorProp = {
   render() {
     const [active, setActive] = useState(true);
 
-    const button = useRef();
+    const button = useRef(null);
 
     const handleOpen = useCallback(() => setActive(true), []);
 

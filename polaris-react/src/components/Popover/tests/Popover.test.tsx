@@ -1,6 +1,6 @@
 import React, {useCallback, useRef, useState} from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {act} from 'react-dom/test-utils';
+import {act} from 'react';
 
 import {Portal} from '../../Portal';
 import {PositionedOverlay} from '../../PositionedOverlay';
@@ -36,7 +36,7 @@ describe('<Popover />', () => {
       {
         active: false,
         ariaHaspopup: undefined,
-        id: ':r0:',
+        id: expect.any(String),
         activatorDisabled: false,
       },
     );
@@ -55,7 +55,7 @@ describe('<Popover />', () => {
       {
         active: false,
         ariaHaspopup: undefined,
-        id: ':r2:',
+        id: expect.any(String),
         activatorDisabled: true,
       },
     );
@@ -380,7 +380,7 @@ describe('<Popover />', () => {
 
   describe('forceUpdatePosition', () => {
     it('exposes a function that allows the Overlay to be programmatically re-rendered', () => {
-      let popoverRef: React.RefObject<PopoverPublicAPI> | null = null;
+      let popoverRef: React.RefObject<PopoverPublicAPI | null> | null = null;
 
       function Test() {
         popoverRef = useRef(null);
@@ -408,7 +408,7 @@ describe('<Popover />', () => {
   describe('close', () => {
     it('exposes a function that closes the popover & focuses the activator by default', () => {
       const activatorId = 'focus-target';
-      let popoverRef: React.RefObject<PopoverPublicAPI> | null = null;
+      let popoverRef: React.RefObject<PopoverPublicAPI | null> | null = null;
 
       function Test() {
         popoverRef = useRef(null);
@@ -436,7 +436,7 @@ describe('<Popover />', () => {
 
     it('exposes a function that closes the popover & focuses the next node when the next-node option is used', () => {
       const nextFocusedId = 'focus-target2';
-      let popoverRef: React.RefObject<PopoverPublicAPI> | null = null;
+      let popoverRef: React.RefObject<PopoverPublicAPI | null> | null = null;
 
       function Test() {
         popoverRef = useRef(null);

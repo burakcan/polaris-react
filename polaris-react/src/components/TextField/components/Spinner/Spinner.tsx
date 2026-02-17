@@ -12,10 +12,10 @@ export interface SpinnerProps {
   onMouseDown(onChange: HandleStepFn): void;
   onMouseUp(): void;
   onBlur(event: React.FocusEvent): void;
+  ref?: React.Ref<HTMLDivElement>;
 }
 
-export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
-  function Spinner({onChange, onClick, onMouseDown, onMouseUp, onBlur}, ref) {
+export function Spinner({onChange, onClick, onMouseDown, onMouseUp, onBlur, ref}: SpinnerProps) {
     function handleStep(step: number) {
       return () => onChange(step);
     }
@@ -57,5 +57,4 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
         </div>
       </div>
     );
-  },
-);
+}

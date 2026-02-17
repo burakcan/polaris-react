@@ -86,7 +86,7 @@ export interface BannerHandles {
   focus(): void;
 }
 
-export function useBannerFocus(bannerRef: React.Ref<BannerHandles>) {
+export function useBannerFocus(bannerRef: React.Ref<BannerHandles> | undefined) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [shouldShowFocus, setShouldShowFocus] = useState(false);
 

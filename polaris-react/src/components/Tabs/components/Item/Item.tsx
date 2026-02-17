@@ -1,4 +1,4 @@
-import type {ReactNode, ReactElement, MutableRefObject} from 'react';
+import type {ReactNode} from 'react';
 import React, {memo, useEffect, useRef} from 'react';
 
 import {classNames} from '../../../../utilities/css';
@@ -21,7 +21,7 @@ export const Item = memo(function Item({
   accessibilityLabel,
   onClick = noop,
 }: ItemProps) {
-  const focusedNode = useRef<HTMLButtonElement | ReactElement | null>(null);
+  const focusedNode = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const focusTarget = focusedNode.current;
@@ -37,21 +37,20 @@ export const Item = memo(function Item({
 
   const sharedProps = {
     id,
-    ref: focusedNode,
     onClick,
     className: classname,
-    'aria-selected': false,
+    'aria-selected': false as const,
     'aria-label': accessibilityLabel,
   };
 
   const markup = url ? (
-    <UnstyledLink {...sharedProps} url={url}>
+    <UnstyledLink {...sharedProps} ref={focusedNode as React.RefObject<any>} url={url}>
       {children}
     </UnstyledLink>
   ) : (
     <button
       {...sharedProps}
-      ref={focusedNode as MutableRefObject<HTMLButtonElement>}
+      ref={focusedNode as React.RefObject<HTMLButtonElement>}
       type="button"
     >
       {children}

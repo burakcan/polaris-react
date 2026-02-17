@@ -43,9 +43,8 @@ describe('<SecondaryNavigation />', () => {
   describe('<Collapsible />', () => {
     it('passes a default id to Collapsible', () => {
       const component = mountWithApp(<SecondaryNavigation {...mockProps} />);
-      expect(component).toContainReactComponent(Collapsible, {
-        id: ':r0:',
-      });
+      const collapsible = component.find(Collapsible);
+      expect(collapsible?.prop('id')).toBeTruthy();
     });
 
     it('disables Collapsible transition', () => {

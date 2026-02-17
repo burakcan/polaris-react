@@ -137,11 +137,11 @@ export function Item({
   const control = url ? (
     <UnstyledLink
       id={id}
-      url={disabled ? null : url}
+      url={url as string}
       className={className}
       external={external}
       aria-label={accessibilityLabel}
-      onClick={disabled ? null : onAction}
+      onClick={disabled ? undefined : onAction}
       role={role}
     >
       {contentWrapper}

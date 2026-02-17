@@ -3,7 +3,6 @@ import React, {
   useCallback,
   useEffect,
   useRef,
-  forwardRef,
 } from 'react';
 import type {
   KeyboardEvent,
@@ -40,33 +39,30 @@ import styles from '../../Tabs.module.css';
 
 import {RenameModal, DuplicateModal} from './components';
 
-export const Tab = forwardRef(
-  (
-    {
-      content,
-      accessibilityLabel,
-      badge,
-      id,
-      panelID,
-      url,
-      onAction,
-      actions,
-      disabled,
-      isModalLoading,
-      icon,
-      siblingTabHasFocus,
-      measuring,
-      focused,
-      selected,
-      onToggleModal,
-      onTogglePopover,
-      viewNames,
-      tabIndexOverride,
-      disclosureZIndexOverride,
-      onFocus,
-    }: TabPropsWithAddedMethods,
-    ref: RefObject<HTMLElement>,
-  ) => {
+export function Tab({
+  content,
+  accessibilityLabel,
+  badge,
+  id,
+  panelID,
+  url,
+  onAction,
+  actions,
+  disabled,
+  isModalLoading,
+  icon,
+  siblingTabHasFocus,
+  measuring,
+  focused,
+  selected,
+  onToggleModal,
+  onTogglePopover,
+  viewNames,
+  tabIndexOverride,
+  disclosureZIndexOverride,
+  onFocus,
+  ref,
+}: TabPropsWithAddedMethods & {ref?: RefObject<HTMLElement | null> | null}) {
     const i18n = useI18n();
     const [popoverActive, setPopoverActive] = useState(false);
     const [activeModalType, setActiveModalType] = useState<TabAction | null>(
@@ -297,7 +293,7 @@ export const Tab = forwardRef(
         aria-label={accessibilityLabel}
         role={tabIndexOverride == null ? 'tab' : undefined}
         disabled={disabled}
-        url={urlIfNotDisabledOrSelected}
+        url={urlIfNotDisabledOrSelected ?? ''}
         onFocus={onFocus}
         onMouseUp={handleMouseUpByBlurring}
         onClick={handleClick}
@@ -397,10 +393,7 @@ export const Tab = forwardRef(
         {markup}
       </li>
     );
-  },
-);
-
-Tab.displayName = 'Tab';
+}
 
 function focusPanelID(panelID: string) {
   const panel = document.getElementById(panelID);
@@ -409,7 +402,7 @@ function focusPanelID(panelID: string) {
   }
 }
 
-function mergeRefs<T = any>(refs: MutableRefObject<T>[]): RefCallback<T> {
+function mergeRefs<T = any>(refs: (MutableRefObject<T> | RefObject<T> | null | undefined)[]): RefCallback<T> {
   return (node) => {
     for (const ref of refs) {
       if (ref != null) {

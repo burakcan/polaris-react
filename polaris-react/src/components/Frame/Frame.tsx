@@ -49,7 +49,7 @@ export interface FrameProps {
    */
   showMobileNavigation?: boolean;
   /** Accepts a ref to the html anchor element you wish to focus when clicking the skip to content link */
-  skipToContentTarget?: React.RefObject<HTMLAnchorElement>;
+  skipToContentTarget?: React.RefObject<HTMLAnchorElement | null>;
   /** A callback function to handle clicking the mobile navigation dismiss button */
   onNavigationDismiss?(): void;
   /** A boolean property indicating whether there should be space for a sidebar

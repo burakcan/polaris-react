@@ -8,7 +8,7 @@ import {Button} from '../../Button';
 
 describe('<SettingToggle />', () => {
   function getComponentProps(node: React.ReactNode) {
-    return (node as JSX.Element).props;
+    return (node as React.JSX.Element).props;
   }
 
   describe('action', () => {

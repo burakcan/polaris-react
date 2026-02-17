@@ -39,6 +39,7 @@ export function UnstyledButton({
   onKeyUp,
   onMouseEnter,
   onTouchStart,
+  onPointerDown,
   ...rest
 }: UnstyledButtonProps) {
   let buttonMarkup;
@@ -93,6 +94,7 @@ export function UnstyledButton({
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}
         onKeyPress={onKeyPress}
+        onPointerDown={onPointerDown}
         onClick={handleClick}
         tabIndex={disabled ? -1 : undefined}
         {...rest}

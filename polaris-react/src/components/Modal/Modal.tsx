@@ -59,7 +59,7 @@ export interface ModalProps extends FooterProps {
   /** Callback when the bottom of the modal content is reached */
   onScrolledToBottom?(): void;
   /** The element or the RefObject that activates the Modal */
-  activator?: React.RefObject<HTMLElement> | React.ReactElement;
+  activator?: React.RefObject<HTMLElement | null> | React.ReactElement;
   /**
    * The element type to wrap the activator in
    * @default 'div'
@@ -247,8 +247,8 @@ export const Modal: React.FunctionComponent<ModalProps> & {
 };
 
 function isRef(
-  ref: React.RefObject<HTMLElement> | React.ReactElement,
-): ref is React.RefObject<HTMLElement> {
+  ref: React.RefObject<HTMLElement | null> | React.ReactElement,
+): ref is React.RefObject<HTMLElement | null> {
   return Object.prototype.hasOwnProperty.call(ref, 'current');
 }
 

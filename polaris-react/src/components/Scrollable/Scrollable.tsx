@@ -4,7 +4,6 @@ import React, {
   useState,
   useCallback,
   useImperativeHandle,
-  forwardRef,
 } from 'react';
 
 import {debounce} from '../../utilities/debounce';
@@ -59,23 +58,20 @@ export interface ScrollableRef {
   scrollTo: (scrollY: number, options?: ScrollToOptions) => void;
 }
 
-const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
-  (
-    {
-      children,
-      className,
-      horizontal = true,
-      vertical = true,
-      shadow,
-      hint,
-      focusable,
-      scrollbarWidth = 'thin',
-      scrollbarGutter,
-      onScrolledToBottom,
-      ...rest
-    }: ScrollableProps,
-    forwardedRef,
-  ) => {
+function ScrollableComponent({
+  children,
+  className,
+  horizontal = true,
+  vertical = true,
+  shadow,
+  hint,
+  focusable,
+  scrollbarWidth = 'thin',
+  scrollbarGutter,
+  onScrolledToBottom,
+  ref: forwardedRef,
+  ...rest
+}: ScrollableProps & {ref?: React.Ref<ScrollableRef>}) {
     const [topShadow, setTopShadow] = useState(false);
     const [bottomShadow, setBottomShadow] = useState(false);
     const stickyManager = useLazyRef(() => new StickyManager());
@@ -91,7 +87,7 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       [],
     );
 
-    const defaultRef = useRef();
+    const defaultRef = useRef(undefined);
     useImperativeHandle(forwardedRef || defaultRef, () => ({scrollTo}));
 
     const handleScroll = useCallback(() => {
@@ -175,10 +171,7 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
         </StickyManagerContext.Provider>
       </ScrollableContext.Provider>
     );
-  },
-);
-
-ScrollableComponent.displayName = 'Scrollable';
+}
 
 function prefersReducedMotion() {
   try {

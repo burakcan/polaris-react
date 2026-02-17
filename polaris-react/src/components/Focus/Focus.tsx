@@ -5,7 +5,7 @@ import {focusFirstFocusableNode} from '../../utilities/focus';
 export interface FocusProps {
   children?: React.ReactNode;
   disabled?: boolean;
-  root: React.RefObject<HTMLElement> | HTMLElement | null;
+  root: React.RefObject<HTMLElement | null> | HTMLElement | null;
 }
 
 export const Focus = memo(function Focus({
@@ -31,7 +31,7 @@ export const Focus = memo(function Focus({
 });
 
 function isRef(
-  ref: React.RefObject<HTMLElement> | HTMLElement,
-): ref is React.RefObject<HTMLElement> {
-  return (ref as React.RefObject<HTMLElement>).current !== undefined;
+  ref: React.RefObject<HTMLElement | null> | HTMLElement,
+): ref is React.RefObject<HTMLElement | null> {
+  return (ref as React.RefObject<HTMLElement | null>).current !== undefined;
 }

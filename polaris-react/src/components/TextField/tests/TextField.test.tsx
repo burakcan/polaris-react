@@ -81,9 +81,8 @@ describe('<TextField />', () => {
       <TextField label="TextField" onChange={noop} autoComplete="off" />,
     );
 
-    expect(textField).toContainReactComponent('input', {
-      'aria-labelledby': ':r2:Label',
-    });
+    const input = textField.find('input');
+    expect(input?.prop('aria-labelledby')).toMatch(/Label$/);
   });
 
   it('adds the password manager disabled props if autoComplete="off" is set', () => {

@@ -1,5 +1,4 @@
 import React, {
-  forwardRef,
   useReducer,
   useState,
   useEffect,
@@ -89,24 +88,22 @@ interface BulkActionsState {
   hasMeasured: boolean;
 }
 
-export const BulkActions = forwardRef(function BulkActions(
-  {
-    promotedActions,
-    actions,
-    disabled,
-    buttonSize,
-    paginatedSelectAllAction,
-    paginatedSelectAllText,
-    label,
-    accessibilityLabel,
-    selected,
-    onToggleAll,
-    onMoreActionPopoverToggle,
-    width,
-    selectMode,
-  }: BulkActionsProps,
+export function BulkActions({
+  promotedActions,
+  actions,
+  disabled,
+  buttonSize,
+  paginatedSelectAllAction,
+  paginatedSelectAllText,
+  label,
+  accessibilityLabel,
+  selected,
+  onToggleAll,
+  onMoreActionPopoverToggle,
+  width,
+  selectMode,
   ref,
-) {
+}: BulkActionsProps & {ref?: React.Ref<any>}) {
   const i18n = useI18n();
   const [popoverActive, setPopoverActive] = useState(false);
 
@@ -388,4 +385,4 @@ export const BulkActions = forwardRef(function BulkActions(
       </InlineStack>
     </div>
   );
-});
+}

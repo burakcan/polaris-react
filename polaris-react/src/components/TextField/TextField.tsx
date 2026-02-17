@@ -272,7 +272,7 @@ export function TextField({
   const suffixRef = useRef<HTMLDivElement>(null);
   const loadingRef = useRef<HTMLDivElement>(null);
   const verticalContentRef = useRef<HTMLDivElement>(null);
-  const buttonPressTimer = useRef<number>();
+  const buttonPressTimer = useRef<number>(undefined);
   const spinnerRef = useRef<HTMLDivElement>(null);
 
   const getInputRef = useCallback(() => {

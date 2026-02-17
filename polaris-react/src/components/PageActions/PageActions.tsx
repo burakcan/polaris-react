@@ -21,7 +21,7 @@ export interface PageActionsProps {
   secondaryActions?: ComplexAction[] | React.ReactNode;
 }
 
-type MaybeJSX = JSX.Element | null;
+type MaybeJSX = React.JSX.Element | null;
 
 export function PageActions({
   primaryAction,

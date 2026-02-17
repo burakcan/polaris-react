@@ -179,7 +179,7 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
 
   return (
     <Combobox
-      activator={textField}
+      activator={textField as React.ReactElement<any>}
       allowMultiple={allowMultiple}
       onScrolledToBottom={onLoadMoreResults}
       preferredPosition={preferredPosition}

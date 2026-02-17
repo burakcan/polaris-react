@@ -7,7 +7,7 @@ export function useFocus(
   /**
    * The target element for the focus event.
    */
-  ref: RefObject<HTMLElement>,
+  ref: RefObject<HTMLElement | null>,
 ): boolean {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -24,7 +24,7 @@ export function useFocusIn(
   /**
    * The target element for the focusin event.
    */
-  ref: RefObject<HTMLElement>,
+  ref: RefObject<HTMLElement | null>,
 ): boolean {
   const [isFocusedIn, setIsFocusedIn] = useState(false);
   const deferredFocusOut = useRef<NodeJS.Timeout | null>(null);

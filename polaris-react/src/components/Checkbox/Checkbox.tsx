@@ -1,5 +1,4 @@
 import React, {
-  forwardRef,
   useRef,
   useImperativeHandle,
   useContext,
@@ -55,34 +54,31 @@ export interface CheckboxProps extends ChoiceBleedProps {
   tone?: 'magic';
 }
 
-export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
-  function Checkbox(
-    {
-      ariaControls,
-      ariaDescribedBy: ariaDescribedByProp,
-      label,
-      labelHidden,
-      checked = false,
-      helpText,
-      disabled,
-      id: idProp,
-      name,
-      value,
-      error,
-      onChange,
-      onFocus,
-      onBlur,
-      labelClassName,
-      fill,
-      bleed,
-      bleedBlockStart,
-      bleedBlockEnd,
-      bleedInlineStart,
-      bleedInlineEnd,
-      tone,
-    }: CheckboxProps,
-    ref,
-  ) {
+export function Checkbox({
+  ariaControls,
+  ariaDescribedBy: ariaDescribedByProp,
+  label,
+  labelHidden,
+  checked = false,
+  helpText,
+  disabled,
+  id: idProp,
+  name,
+  value,
+  error,
+  onChange,
+  onFocus,
+  onBlur,
+  labelClassName,
+  fill,
+  bleed,
+  bleedBlockStart,
+  bleedBlockEnd,
+  bleedInlineStart,
+  bleedInlineEnd,
+  tone,
+  ref,
+}: CheckboxProps & {ref?: React.Ref<CheckboxHandles>}) {
     const inputNode = useRef<HTMLInputElement>(null);
     const uniqId = useId();
     const id = idProp ?? uniqId;
@@ -216,8 +212,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
         </span>
       </Choice>
     );
-  },
-);
+}
 
 function noop() {}
 
