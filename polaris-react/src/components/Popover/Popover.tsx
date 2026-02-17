@@ -239,15 +239,6 @@ function PopoverComponent({
       setAccessibilityAttributes();
     }, [activatorNode, setAccessibilityAttributes]);
 
-    useEffect(() => {
-      if (activatorNode && activatorContainer.current) {
-        setActivatorNode(
-          activatorContainer.current.firstElementChild as HTMLElement,
-        );
-      }
-      setAccessibilityAttributes();
-    }, [activatorNode, setAccessibilityAttributes]);
-
     const portal =
       activatorNode && isDisplayed ? (
         <Portal idPrefix="popover">

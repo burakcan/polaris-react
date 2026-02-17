@@ -180,7 +180,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         preferInputActivator={preferInputActivator}
         preferredPosition={preferredPosition}
         preferredAlignment={preferredAlignment}
-        render={this.renderPopover.bind(this)}
+        render={this.renderPopover}
         fixed={fixed}
         onScrollOut={this.handleScrollOut}
         classNames={className}
